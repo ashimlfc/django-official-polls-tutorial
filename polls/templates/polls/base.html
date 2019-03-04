@@ -1,18 +1,35 @@
+{% load staticfiles%}
+
 <!DOCTYPE html>
 <html>
 <head>
+	 <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
-	<h1>This is a Header</h1>
-	<hr>
+	<nav class="navbar navbar-light bg-light">
+ 		<a href="{% url 'polls:index'%}"> <h3> Home </h3></a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+
+<div class = "container">
 
 	{% block main_content %}
 
 	{% endblock %}
 
-	{% include 'polls/footer.html' %}
+		{% include 'polls/footer.html' %}
+
+</div>
+
 
 </body>
 </html>

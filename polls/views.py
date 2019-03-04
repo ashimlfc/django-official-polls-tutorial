@@ -21,7 +21,9 @@ def detail(request, question_id):
 		return render(request,'polls/detail.html', {'question' : question})
 
 def results(request, question_id):
-	return HttpResponse("These are the results of the question: %s" % question_id)
+	question = get_object_or_404(Question, pk = question_id)
+	return render(request, 'polls/results.html', {'question': question})
+
 
 def vote(request, question_id):
 	question = get_object_or_404(Question, pk = question_id)
@@ -39,5 +41,5 @@ def vote(request, question_id):
 		#returning an HttpResponse Redirect after succesfully dealig with POST data
 		#prevents data from being posted twice if a user hits the back button
 
-	return HttpResponseRedirect(reverse('polls:results', args = (question_id,)))
+	return HttpResponseRedirect(reverse('polls:results', args = (question.id,)))
  
